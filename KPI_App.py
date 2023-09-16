@@ -102,10 +102,10 @@ special_names = {'Lionel Messi': 'Lionel Messi :goat:',
 # Change to valid or invalid a URL has been picked
 def valid_URL1():
     st.session_state['URL1'] = 'Yes'
-    # st.session_state['S1'] = 'No'
+    st.session_state['S1'] = 'No'
 def valid_URL2():
     st.session_state['URL2'] = 'Yes'
-    # st.session_state['S2'] = 'No'
+    st.session_state['S2'] = 'No'
 def invalid_URL1():
     st.session_state['URL1'] = 'invalid'
 def invalid_URL2():
@@ -148,7 +148,7 @@ st.title('Welcome! Wanna compare some players based on a large list of KPIs? Her
 
 P1 = st.sidebar.text_input("Enter a valid URL to a player's FBref page, so I can get you your data :ok_hand:",
                      max_chars=150, help='Example: https://fbref.com/en/players/d70ce98e/Lionel-Messi',
-                     on_change=valid_URL1)
+                     on_change=valid_URL1, key = 'P1_text_input')
 
 # ----------------------------------------
 # Step one of the scraping process
@@ -156,7 +156,7 @@ P1 = st.sidebar.text_input("Enter a valid URL to a player's FBref page, so I can
 # causes URL1-state to go back to default
 # ----------------------------------------
 
-if st.session_state['URL1'] == 'Yes':
+if st.session_state['URL1'] == 'Yes' and st.session_state['S1'] == 'No':
     P1 = str(P1)        # make sure URL is a string
     soup1, unique_positions1, position_stats1, name1 = Scrape_Player_via_Link_st1(P1) # actual scraping using function
     # store everything in session states for accessibility
@@ -184,7 +184,13 @@ if st.session_state['URL1'] == 'Yes':
 # otherwise selected_position = first option = 0
 # ----------------------------------------------
 
-selected_position1 = 0
+if (st.session_state['S1'] == 1 or st.session_state['S1'] == 2) and st.session_state['mul_pos1'] == 'multiple':
+    selected_position_str1 = st.sidebar.selectbox(f'Choose a position for {st.session_state["special_name1"]}', st.session_state["up1"],
+                                            help="Position should match the second player's position",
+                                            on_change=Scraped1_1, key = 'pos1_selectbox')
+    selected_position1 = st.session_state["up1"].index(selected_position_str1)
+else:
+    selected_position1 = 0
 # store selected position in state
 st.session_state['position1'] = selected_position1
 
@@ -219,7 +225,7 @@ if st.session_state['S1'] == 2:
     st.sidebar.divider()
     P2 = st.sidebar.text_input('And a URL for a second player:',
                          max_chars=150, help='Example: https://fbref.com/en/players/b66315ae/Gabriel-Jesus',
-                         on_change=valid_URL2)
+                         on_change=valid_URL2, key='P2_text_input')
 
 # --------------------------------------------------------------------
 # Step one of the scraping process
@@ -227,7 +233,7 @@ if st.session_state['S1'] == 2:
 # causes URL1-state to go back to default
 # --------------------------------------------------------------------
 
-if st.session_state['URL2'] == 'Yes' and st.session_state['S1'] == 2:
+if st.session_state['URL2'] == 'Yes' and st.session_state['S2'] == 'No' and st.session_state['S1'] == 2:
     P2 = str(P2)        # make sure URL is a string
     soup2, unique_positions2, position_stats2, name2 = Scrape_Player_via_Link_st1(P2) # actual scraping using function
     # store everything in session states for accessibility
@@ -257,7 +263,13 @@ if st.session_state['URL2'] == 'Yes' and st.session_state['S1'] == 2:
 # otherwise selected_position = first option = 0
 # ----------------------------------------------
 
-selected_position2 = 0
+if (st.session_state['S2'] == 1 or st.session_state['S2'] == 2) and st.session_state['mul_pos2'] == 'multiple':
+    selected_position_str2 = st.sidebar.selectbox(f'Chose a position for {st.session_state["special_name2"]}', st.session_state["up2"],
+                                            help="Position should match the second player's position",
+                                            on_change=Scraped2_1, key='pos2_selectbox')
+    selected_position2 = st.session_state["up2"].index(selected_position_str2)
+else:
+    selected_position2 = 0
 # store selected position in state
 st.session_state['position2'] = selected_position2
 
@@ -304,7 +316,7 @@ if st.session_state['S1'] == 2 and st.session_state['S2'] ==2:
     pos2 = st.session_state['up2'][st.session_state['position2']]
     params = st.multiselect('Pick the KPIs of interest to your analysis.',
                               options=df1.Variables, help='I recommend picking between 6 and 10 KPIs',
-                              on_change=Ready_Radar)
+                              on_change=Ready_Radar, key='params_multiselect')
 
     st.divider()
 
