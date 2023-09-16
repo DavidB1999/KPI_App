@@ -102,10 +102,10 @@ special_names = {'Lionel Messi': 'Lionel Messi :goat:',
 # Change to valid or invalid a URL has been picked
 def valid_URL1():
     st.session_state['URL1'] = 'Yes'
-    st.session_state['S1'] = 'No'
+    # st.session_state['S1'] = 'No'
 def valid_URL2():
     st.session_state['URL2'] = 'Yes'
-    st.session_state['S2'] = 'No'
+    # st.session_state['S2'] = 'No'
 def invalid_URL1():
     st.session_state['URL1'] = 'invalid'
 def invalid_URL2():
@@ -156,7 +156,7 @@ P1 = st.sidebar.text_input("Enter a valid URL to a player's FBref page, so I can
 # causes URL1-state to go back to default
 # ----------------------------------------
 
-if st.session_state['URL1'] == 'Yes' and st.session_state['S1'] == 'No':
+if st.session_state['URL1'] == 'Yes':
     P1 = str(P1)        # make sure URL is a string
     soup1, unique_positions1, position_stats1, name1 = Scrape_Player_via_Link_st1(P1) # actual scraping using function
     # store everything in session states for accessibility
@@ -233,7 +233,7 @@ if st.session_state['S1'] == 2:
 # causes URL1-state to go back to default
 # --------------------------------------------------------------------
 
-if st.session_state['URL2'] == 'Yes' and st.session_state['S2'] == 'No' and st.session_state['S1'] == 2:
+if st.session_state['URL2'] == 'Yes' and st.session_state['S1'] == 2:
     P2 = str(P2)        # make sure URL is a string
     soup2, unique_positions2, position_stats2, name2 = Scrape_Player_via_Link_st1(P2) # actual scraping using function
     # store everything in session states for accessibility
