@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from soccerplots.radar_chart import Radar
 import matplotlib.pyplot as plt
 import plotly_express as px
 import plotly.graph_objects as go
