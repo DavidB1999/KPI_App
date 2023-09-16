@@ -186,8 +186,7 @@ if st.session_state['URL1'] == 'Yes':
 
 if (st.session_state['S1'] == 1 or st.session_state['S1'] == 2) and st.session_state['mul_pos1'] == 'multiple':
     selected_position_str1 = st.sidebar.selectbox(f'Choose a position for {st.session_state["special_name1"]}', st.session_state["up1"],
-                                            help="Position should match the second player's position",
-                                            on_change=Scraped1_1)
+                                            help="Position should match the second player's position")
     selected_position1 = st.session_state["up1"].index(selected_position_str1)
 else:
     selected_position1 = 0
@@ -265,8 +264,7 @@ if st.session_state['URL2'] == 'Yes' and st.session_state['S1'] == 2:
 
 if (st.session_state['S2'] == 1 or st.session_state['S2'] == 2) and st.session_state['mul_pos2'] == 'multiple':
     selected_position_str2 = st.sidebar.selectbox(f'Chose a position for {st.session_state["special_name2"]}', st.session_state["up2"],
-                                            help="Position should match the second player's position",
-                                            on_change=Scraped2_1)
+                                            help="Position should match the second player's position")
     selected_position2 = st.session_state["up2"].index(selected_position_str2)
 else:
     selected_position2 = 0
