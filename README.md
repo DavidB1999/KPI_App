@@ -7,4 +7,4 @@ So far I have been unable to find a solution, but since the deployment relies on
 This is what it looks like offline: <br>
 
 
-![Alt text]('https://github.com/DavidB1999/KPI_App/blob/main/WebApp.jpg)
+![The App]('https://github.com/DavidB1999/KPI_App/blob/main/WebApp.jpg)
