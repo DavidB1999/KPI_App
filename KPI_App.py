@@ -184,8 +184,7 @@ if st.session_state['URL1'] == 'Yes':
 # otherwise selected_position = first option = 0
 # ----------------------------------------------
 
-if (st.session_state['S1'] == 1 or st.session_state['S1'] == 2) and st.session_state['mul_pos1'] == 'multiple':
-    selected_position1 = 0
+selected_position1 = 0
 # store selected position in state
 st.session_state['position1'] = selected_position1
 
@@ -258,9 +257,7 @@ if st.session_state['URL2'] == 'Yes' and st.session_state['S1'] == 2:
 # otherwise selected_position = first option = 0
 # ----------------------------------------------
 
-if (st.session_state['S2'] == 1 or st.session_state['S2'] == 2) and st.session_state['mul_pos2'] == 'multiple':
-
-    selected_position2 = 0
+selected_position2 = 0
 # store selected position in state
 st.session_state['position2'] = selected_position2
 
