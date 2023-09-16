@@ -4,7 +4,7 @@ Just for fun I started playing around with *Streamlit* (https://streamlit.io/). 
 When deploying it via *Streamlit* (https://kpiapp-db.streamlit.app/), I get an *RecursionError* which is apparently caused by my select widgets (selectbox and multiselect).
 So far I have been unable to find a solution, but since the deployment relies on a github-repository anyway I might as well document the current status of this mini-project.
 
-This is what it looks like offline: <br>
+This is what it looks like offline (and zoomed out): <br>
 
 
 ![The App](https://github.com/DavidB1999/KPI_App/blob/main/WebApp.jpg)
