@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import plotly_express as px
+import plotly.express as px
 import plotly.graph_objects as go
 import plotly
 from Scrape_Player import Scrape_Player_via_Link
