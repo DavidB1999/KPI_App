@@ -28,9 +28,9 @@ def create_radar_plotly(URL1, URL2, params):
     r1.append(r1[0])
     r2 = [int(x) for x in data2.Percentiles]
     r2.append(r2[0])
-    Values1 = [float(x) for x in df1.Values]
+    Values1 = [float(x) for x in data1.Values]
     Values1.append(Values1[0])
-    Values2 = [float(x) for x in df2.Values]
+    Values2 = [float(x) for x in data2.Values]
     Values2.append(Values2[0])
 
     parameters = params
